@@ -47,7 +47,7 @@ VALID_TAGS = {'html': [],
               #'a': ['href', 'title'],
               'div':['id']
               }
-FILE='html/4728355.html'
+FILE='html/4966416.html'
 
 def sanitize_html(value, valid_tags=VALID_TAGS):
     soup = BeautifulSoup(value)
@@ -79,6 +79,14 @@ def sanitize_html(value, valid_tags=VALID_TAGS):
 
 def filte(file=FILE):
     v=open(file).read()
-    print sanitize_html(test)
+    print sanitize_html(v)
+
+def test():
+	v=open(FILE).read()
+	soup = BeautifulSoup(v)
+	cont=soup.findAll('div',attrs={'id':'content'})
+	print cont
 
 filte()
+print '================================'
+test()
