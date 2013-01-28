@@ -16,13 +16,13 @@ def getLastNum():
 	
 def output(last,url):
 	print "last=",last,"url=",url
-	f=open('surls.txt')
+	f=open('surls.txt','w+')
 	p=re.compile('(\d{7})\.html')
 	for line in open('allurls.txt').readlines():
 		m=p.search(line)
 		if m and int(m.group(1)) > last:
 			#print "%s/%s   %s"%(url,m.group(0), m.group(1)) 
-			f.write("%s/%s",(url,m.group(0)))
+			f.write("%s/%s\n"%(url,m.group(0)))
 			pass
 
 	f.close()
