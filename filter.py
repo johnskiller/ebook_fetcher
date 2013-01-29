@@ -3,7 +3,7 @@
 from bs4 import BeautifulSoup, Comment
 VALID_TAGS = {'html': [],
               'head': [],
-              'p': [],
+              #'p': [],
               'body': [],
               'title': [],
               'h1': [],
@@ -26,9 +26,11 @@ def sanitize_html(value, valid_tags=VALID_TAGS):
         for tag in soup.findAll(True):
             if tag.name not in valid_tags:
                 tag.hidden = True
+		tag.replaceWith('')
             else:
 		if tag.name == 'div' and tag.attrs.get(u'id','') != u'content':
 			tag.hidden = True
+			#tag.replaceWith('')
         newoutput = soup.renderContents()
         if oldoutput == newoutput:
             break
