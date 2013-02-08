@@ -29,16 +29,18 @@ def sanitize_html(value, valid_tags=VALID_TAGS):
 		for tag in soup.findAll(True):
 			if tag.name not in valid_tags:
 				tag.hidden = True
-				tag.replaceWith('')
+				#tag.replaceWith('')
+				tag.extract()
 			else:
 				if tag.name == 'div' and tag.attrs.get(u'id','') != u'content':
 					tag.hidden = True
 					#tag.replaceWith('')
+					#tag.extract()
 					#print "--- ",tag.name, tag.attrs
-				else:
-					if tag.name == 'div' :
+				#else:
+					#if tag.name == 'div' :
 						#pass
-						print "+++ ",tag.name, tag.attrs
+						#print "+++ ",tag.name, tag.attrs
 		newoutput = soup.renderContents()
 		if oldoutput == newoutput:
 			break
