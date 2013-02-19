@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # coding=utf-8
+import re
+import os,sys
 from bs4 import BeautifulSoup, Comment
 VALID_TAGS = {'html': [],
               'head': [],
@@ -47,13 +49,21 @@ def test():
 	cont=soup.findAll('div',attrs={'id':'content'})
 	print cont
 
-def loop_all():
-	import os,sys
+def loop_all(last=0):
+	p=re.compile('(\d{7})\.html')
 	for f in os.listdir('html'):
-		filte(f)
-		sys.stdout.write('.')
-		sys.stdout.flush()
+		m=p.search(f)
+		if m and int(m.group(1)) > last:
+			filte(f)
+			sys.stdout.write('.')
+			sys.stdout.flush()
 
 
-loop_all()
+if len(sys.argv) > 1:
+	last = int(sys.argv[1])
+else:
+	last = 0
+
+loop_all(last)
+
 	
