@@ -47,8 +47,8 @@ def sanitize_html(value, valid_tags=VALID_TAGS):
 	return newoutput
 
 def filte(file=FILE):
-	v=open('html/%s'%file).read()
-	f=open('newhtml/%s'%file,'w+')
+	v=open('htmlguanshang/%s'%file).read()
+	f=open('newhtml_guanshang/%s'%file,'w+')
 	re.sub(rot,'',v)
 	f.write(sanitize_html(v))
 	f.close()
@@ -61,7 +61,7 @@ def test():
 
 def loop_all():
 	import os,sys
-	for f in os.listdir('html'):
+	for f in os.listdir('htmlguanshang'):
 		filte(f)
 		sys.stdout.write('.')
 		sys.stdout.flush()

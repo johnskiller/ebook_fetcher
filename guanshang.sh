@@ -1,6 +1,6 @@
 #!/bin/bash
 
-url='http://www.woqudu.com/files/article/html/2/2216/'
+url='http://www.99reader.cn/files/article/html/2/2098/'
 base=`basename $0 .sh`
 
 

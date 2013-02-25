@@ -17,7 +17,7 @@ def getLastNum():
 def output(last,url):
 	print "last=",last,"url=",url
 	f=open('surls.txt','w+')
-	p=re.compile('(\d{7})\.html')
+	p=re.compile('(\d+)\.html')
 	for line in open('allurls.txt').readlines():
 		m=p.search(line)
 		if m and int(m.group(1)) > last:
